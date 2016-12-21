@@ -2,18 +2,14 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Story::class, function (Faker\Generator $faker) {
-    $gender = collect(['male', 'female'])->random();
+    $conflict = \App\Conflict::get()->random();
 
     return [
-    	'title' => collect([null,null,null,$faker->title($gender)])->random(),
-    	'firstName' => $faker->firstName($gender),
-    	'lastName' => $faker->lastName(),
-    	'suffix' => collect([null,null,null,$faker->suffix()])->random(),
-        'gender' => $gender,
-        'occupation' => getOccupation(),
-        'traits' => getCharacterTraits(),
-        'age' => rand(12, 99),
-        'hairColor' => collect(['black','brown','red','blonde','white'])->random()
+        'user_id' => factory(App\User::class)->create()->id,
+    	'title' => $faker->sentence(),
+        'cover_image' => $faker->imageUrl(600,927),
+        'setting' => $faker->country(),
+        'main_character_id' => factory(App\Character::class)->create()->id,
+        'villain_id' => factory(App\Character::class)->create()->id
     ];
 });
-

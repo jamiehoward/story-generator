@@ -15,11 +15,16 @@ class AddStoriesTable extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->default(1);
             $table->string('title')->default('Untitled');
             $table->string('cover_image')->nullable();
             $table->text('plot')->nullable();
             $table->string('setting')->nullable();
+            $table->integer('conflict_id')->nullable();
+            $table->integer('main_character_id')->default(1);
+            $table->integer('villain_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

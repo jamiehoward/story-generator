@@ -13,7 +13,12 @@ class AddConflictsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('conflicts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description')->nullable();
+            $table->string('format')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class AddConflictsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('conflicts');
     }
 }

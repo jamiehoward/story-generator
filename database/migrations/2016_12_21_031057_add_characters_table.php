@@ -19,13 +19,14 @@ class AddCharactersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('suffix')->nullable();
-            $table->integer('occupation')->nullable();
+            $table->integer('occupation_id')->nullable();
             $table->date('birthdate')->default('1900-01-01');
-            $table->bool('gender')->default(0);
+            $table->boolean('gender')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
 
-        Schema::create('characters_stories', function (Blueprint $table) {
+        Schema::create('character_story', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('character_id');
             $table->integer('story_id');
@@ -40,6 +41,6 @@ class AddCharactersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('characters');
-        Schema::dropIfExists('characters_stories');
+        Schema::dropIfExists('character_story');
     }
 }

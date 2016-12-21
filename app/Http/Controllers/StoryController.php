@@ -26,7 +26,7 @@ class StoryController extends Controller
 
     	$this->data['stories'] = [];
 
-    	return view('story', $this->data);
+    	return view('stories.list', $this->data);
     }
 
     public function makeStory()

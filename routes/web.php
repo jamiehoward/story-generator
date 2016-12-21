@@ -11,5 +11,8 @@
 |
 */
 
-Route::get('/', 'StoryController@index');
+Auth::routes();
+Route::get('/home', 'HomeController@index');
+
+Route::get('/', 'StoryController@index')->middleware('auth');
 Route::get('/makeStory', 'StoryController@makeStory');

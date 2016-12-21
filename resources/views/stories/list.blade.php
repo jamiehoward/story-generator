@@ -1,9 +1,9 @@
 @extends('main')
 
-@section('yield')
+@section('content')
 	
 	@forelse ($stories as $story)
-
+		
 	@empty
 		<div style="color:lightgray">
 			<h1>No stories yet.</h1>
